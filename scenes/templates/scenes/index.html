@@ -1,0 +1,23 @@
+{% extends "scenes/layout.html" %}
+{% load static %}
+{% block body %}
+<link rel="stylesheet" href="{% static 'scenes/ballBounce.css' %}">
+
+<div class = "ballBody">
+    <div class = "scene">
+        <div class = "cube">
+            <div class = "side front"></div>
+            <div class = "side back"></div>
+            <div class = "side top">
+                <div class = "ballShadow"></div>
+            </div>
+            <div class = "side bottom"></div>
+            <div class = "side left"></div>
+            <div class = "side rigth"></div>
+        </div>
+        <div class = "ball"></div>
+        <div class = "floor"></div>
+    </div>
+</div>
+
+{% endblock%}

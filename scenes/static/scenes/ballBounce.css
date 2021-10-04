@@ -1,0 +1,125 @@
+.ballBody {
+    background-color: #000000;
+    min-height: 100vh;
+    display: flex;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    perspective: 20em;
+    perspective-origin: 50% calc(50% - 4em);
+}
+
+.scene {
+    position: relative;
+    transform-style: preserve-3d;
+    animation: sceneRotate 20s infinite linear;
+}
+
+@keyframes sceneRotate {
+    to {transform: rotateY(360deg);}
+}
+
+.ball {
+    width: 2em;
+    height: 2em;
+    background: #FF00FF90;
+    border-radius: 50%;
+    position: absolute;
+    left: -1em;
+    bottom: 1.5em;
+    background-image: radial-gradient(
+        circle at top,
+        #FF00FF90, 
+        30%,
+        #000
+    );
+    animation: sceneRotate 20s infinite linear reverse,
+        ballBounce 1.5s infinite ease-out;
+}
+
+@keyframes ballBounce {
+    0%, 100% {bottom: 0.75em;}
+    50% {bottom: 4.5em; animation-timing-function: ease-in;}
+}
+
+.cube {
+    position: absolute;
+    width: 3em;
+    height: 3em;
+    bottom: -1.5em;
+    left: -1.5em;
+    transform-style: preserve-3d;
+    animation: cubeHeight 1.5s infinite ease-out;
+}
+
+@keyframes cubeHeight {
+    0%, 100% {height: 2.5em}
+    8%, 93.5% {height: 3em}
+}
+
+.side {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #00FFFF90;
+    box-shadow: 0 0 1em #000a inset;
+}
+
+.front {
+    transform: translateZ(1.5em);
+}
+
+.rigth {
+    transform: rotateY(90deg) translateZ(1.5em);
+}
+
+.back {
+    transform: rotateY(180deg) translateZ(1.5em);
+}
+
+.left {
+    transform: rotateY(270deg) translateZ(1.5em);
+}
+
+.top{
+    width: 3em;
+    height: 3em;
+    transform: translateY(-50%) rotateX(90deg)
+}
+
+.ballShadow {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /* background-color: #fff; */
+    background-image: radial-gradient(
+        #0007,
+        #0000 50%
+    );
+    animation: shapeShadow 1.5s infinite ease-out;
+}
+
+@keyframes shapeShadow {
+    0%, 8%, 93.5%, 100% {transform: scale(1); opacity: 1}
+    50% {transform: scale(2); opacity: 0.5; animation-timing-function: ease-in;}
+}
+
+.bottom {
+    width: 3em;
+    height: 3em;
+    background: #0007;
+    transform: translateY(50%) rotateX(90deg);
+}
+
+.floor {
+    width: 25em;
+    height: 25em;
+    background-image:
+        radial-gradient(#0000, #000 75%), 
+        repeating-conic-gradient(from 0deg, #A8A8A890  0deg 90deg,#00000090 90deg 180deg);
+    background-size: 100%, 1em 1em;
+    position: absolute;
+    top: 1.5em;
+    transform: translate(-50%, -50%) rotateX(90deg);
+}
